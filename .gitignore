@@ -1,0 +1,11 @@
+# VSCode settings
+.vscode/
+
+# macOS
+.DS_Store
+
+# Node modules (if needed in future)
+node_modules/
+
+# Logs
+*.log
