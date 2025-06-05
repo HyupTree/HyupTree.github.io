@@ -14,15 +14,13 @@ permalink: /til/
     {% for til in sorted_til %}
     <div class="til-item">
         <div class="til-title">
-            <a href="{{ til.url | relative_url }}">
-                [{{ til.date | date: "%Y.%m.%d" }}] {{ til.title }}
-            </a>
+            <a href="{{ til.url | relative_url }}">{{ til.title }}</a>
         </div>
-        <div class="til-date">-rw-r--r-- 1 user user {{ til.content | size }} {{ til.date | date: "%b %d %H:%M" }}</div>
-        <div class="til-excerpt">{{ til.excerpt | strip_html | truncate: 150 }}</div>
+        <div class="til-date">{{ til.date | date: "%Y년 %m월 %d일" }}</div>
         {% if til.subject %}
-        <div class="til-subject">📖 {{ til.subject }}</div>
+        <div class="til-subject">📖 Subject: {{ til.subject }}</div>
         {% endif %}
+        <div class="til-excerpt">{{ til.excerpt | strip_html | truncate: 150 }}</div>
         {% if til.tags %}
         <div class="til-tags">
             {% for tag in til.tags %}
@@ -30,10 +28,19 @@ permalink: /til/
             {% endfor %}
         </div>
         {% endif %}
+        <div class="til-links">
+            <a href="{{ til.url | relative_url }}" class="project-link">학습 내용 보기</a>
+        </div>
     </div>
     {% endfor %}
     
     {% if site.til.size == 0 %}
-    <p>아직 작성된 TIL이 없습니다.</p>
+    <div class="prompt-line">
+        <span class="prompt">hyuptree@devlog:~/til$</span>
+        <span class="command">echo "No TIL found"</span>
+    </div>
+    <div class="output">
+        <p>아직 작성된 TIL이 없습니다.</p>
+    </div>
     {% endif %}
 </div> 

@@ -8,16 +8,16 @@ url: "https://hyuptree.github.io" # GitHub Pages URL
 # Build settings
 markdown: kramdown
 highlighter: rouge
-permalink: /:categories/:year/:month/:day/:title/
+permalink: /posts/:year/:title/
 
 # Collections
 collections:
   til:
     output: true
-    permalink: /til/:year/:month/:day/:title/
+    permalink: /til/:year/:title/
   projects:
     output: true
-    permalink: /projects/:name/
+    permalink: /projects/:title/
 
 # Plugins
 plugins:

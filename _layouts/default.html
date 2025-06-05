@@ -29,13 +29,15 @@
                 <span class="btn maximize"></span>
             </div>
             <div class="terminal-title">hyuptree@devlog</div>
+            <button class="home-button" data-home="true" title="메인으로 돌아가기">
+                🏠 Home
+            </button>
         </div>
         <div class="terminal-body">
             <div class="terminal-split">
                 <div class="terminal-left">
                     <div class="terminal-content">
-                        <!-- 환영 메시지 (메인 페이지에서만) -->
-                        {% if page.url == "/" %}
+                        <!-- 환영 메시지 (모든 페이지에서 표시) -->
                         <div class="prompt-line">
                             <span class="prompt">hyuptree@devlog:~$</span>
                             <span class="command">cat welcome.txt</span>
@@ -58,7 +60,6 @@
                             </pre>
                             <p class="welcome-text">hyuptree의 개발 로그에 오신 것을 환영합니다!</p>
                         </div>
-                        {% endif %}
                         
                         <div class="prompt-line">
                             <span class="prompt">hyuptree@devlog:~$</span>
@@ -67,7 +68,7 @@
                         <div class="output">
                             <div class="file-list">
                                 {% for nav in site.navigation %}
-                                <div class="file-item" onclick="location.href='{{ nav.url | relative_url }}'">
+                                <div class="file-item" data-url="{{ nav.url | relative_url }}" data-title="{{ nav.title }}">
                                     <span class="file-icon">
                                         {% case nav.title %}
                                         {% when 'About' %}📁
@@ -112,10 +113,6 @@
             </div>
         </div>
     </div>
-    
-    <button class="back-to-menu" onclick="location.href='{{ '/' | relative_url }}'" title="메인으로 돌아가기">
-        ↑ Home
-    </button>
     
     <!-- JavaScript 파일 로드 -->
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>

@@ -2,8 +2,8 @@
 title: "레트로 터미널 UI 블로그 만들기"
 date: 2024-11-15 10:30:00 +0900
 author: "hyuptree"
-categories: [웹개발, 프론트엔드]
-tags: [HTML, CSS, JavaScript, GitHub-Pages, 터미널-UI]
+categories: [web-development, frontend]
+tags: [HTML, CSS, JavaScript, GitHub-Pages, terminal-UI]
 excerpt: "GitHub Pages와 순수 HTML/CSS/JS로 레트로 터미널 느낌의 블로그를 만들어보았습니다. CRT 모니터의 스캔라인 효과와 깜빡이는 커서로 진짜 터미널 같은 느낌을 구현했습니다."
 ---
 

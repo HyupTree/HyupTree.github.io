@@ -3,56 +3,10 @@ layout: default
 ---
 
 <h2>📚 {{ page.title }}</h2>
-<div class="til-meta">
-    <div class="prompt-line">
-        <span class="prompt">hyuptree@devlog:~/til$</span>
-        <span class="command">cat {{ page.date | date: "%Y-%m-%d" }}-{{ page.title | slugify }}.md</span>
-    </div>
-    <div class="til-date">📅 {{ page.date | date: "%Y-%m-%d" }}</div>
-    {% if page.subject %}
-    <div class="til-subject">📖 주제: {{ page.subject }}</div>
-    {% endif %}
-    {% if page.tags %}
-    <div class="til-tags">
-        🏷️ 태그: 
-        {% for tag in page.tags %}
-        <span class="tag">#{{ tag }}</span>
-        {% endfor %}
-    </div>
-    {% endif %}
-</div>
+{% include meta-info.html type="til" %}
 
 <div class="til-content">
     {{ content }}
 </div>
 
-<div class="til-navigation">
-    {% assign sorted_til = site.til | sort: 'date' | reverse %}
-    {% for til in sorted_til %}
-        {% if til.url == page.url %}
-            {% assign current_index = forloop.index %}
-            {% break %}
-        {% endif %}
-    {% endfor %}
-    
-    {% assign prev_index = current_index | plus: 1 %}
-    {% assign next_index = current_index | minus: 1 %}
-    
-    {% if prev_index <= sorted_til.size %}
-        {% assign prev_til = sorted_til[prev_index] %}
-        <div class="nav-previous">
-            <a href="{{ prev_til.url | relative_url }}">
-                ← {{ prev_til.title }}
-            </a>
-        </div>
-    {% endif %}
-    
-    {% if next_index > 0 %}
-        {% assign next_til = sorted_til[next_index] %}
-        <div class="nav-next">
-            <a href="{{ next_til.url | relative_url }}">
-                {{ next_til.title }} →
-            </a>
-        </div>
-    {% endif %}
-</div> 
+{% include navigation.html type="til" %} 

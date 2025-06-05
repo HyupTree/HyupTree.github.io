@@ -2,8 +2,8 @@
 title: "CSS 애니메이션으로 터미널 효과 구현하기"
 date: 2024-11-10 14:20:00 +0900
 author: "hyuptree"
-categories: [웹개발, CSS]
-tags: [CSS, 애니메이션, 터미널, 스캔라인, 효과]
+categories: [web-development, CSS]
+tags: [CSS, animation, terminal, scanlines, effects]
 excerpt: "CSS 애니메이션을 활용해서 진짜 터미널 같은 효과를 구현하는 방법을 알아보겠습니다. 스캔라인, 글로우, 깜빡이는 커서까지!"
 ---
 

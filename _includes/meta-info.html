@@ -1,0 +1,47 @@
+{% if include.type == "post" %}
+<div class="post-meta">
+    <div class="prompt-line">
+        <span class="prompt">hyuptree@devlog:~/posts$</span>
+        <span class="command">cat {{ page.title | slugify }}.md</span>
+    </div>
+    <div class="post-date">작성일: {{ page.date | date: "%Y-%m-%d" }}</div>
+    {% if page.author %}
+    <div class="post-author">작성자: {{ page.author }}</div>
+    {% endif %}
+    {% if page.categories %}
+    <div class="post-categories">
+        카테고리: 
+        {% for category in page.categories %}
+        <span class="category">{{ category }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if page.tags %}
+    <div class="post-tags">
+        태그: 
+        {% for tag in page.tags %}
+        <span class="tag">#{{ tag }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% elsif include.type == "til" %}
+<div class="til-meta">
+    <div class="prompt-line">
+        <span class="prompt">hyuptree@devlog:~/til$</span>
+        <span class="command">cat {{ page.date | date: "%Y-%m-%d" }}-{{ page.title | slugify }}.md</span>
+    </div>
+    <div class="til-date">📅 {{ page.date | date: "%Y-%m-%d" }}</div>
+    {% if page.subject %}
+    <div class="til-subject">📖 주제: {{ page.subject }}</div>
+    {% endif %}
+    {% if page.tags %}
+    <div class="til-tags">
+        🏷️ 태그: 
+        {% for tag in page.tags %}
+        <span class="tag">#{{ tag }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endif %} 

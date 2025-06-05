@@ -1,0 +1,50 @@
+{% if include.type == "post" %}
+<div class="post-navigation">
+    {% if page.previous.url %}
+    <div class="nav-previous">
+        <a href="{{ page.previous.url | relative_url }}">
+            ← {{ page.previous.title }}
+        </a>
+    </div>
+    {% endif %}
+    
+    {% if page.next.url %}
+    <div class="nav-next">
+        <a href="{{ page.next.url | relative_url }}">
+            {{ page.next.title }} →
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% elsif include.type == "til" %}
+<div class="til-navigation">
+    {% assign sorted_til = site.til | sort: 'date' | reverse %}
+    {% for til in sorted_til %}
+        {% if til.url == page.url %}
+            {% assign current_index = forloop.index %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    
+    {% assign prev_index = current_index | plus: 1 %}
+    {% assign next_index = current_index | minus: 1 %}
+    
+    {% if prev_index <= sorted_til.size %}
+        {% assign prev_til = sorted_til[prev_index] %}
+        <div class="nav-previous">
+            <a href="{{ prev_til.url | relative_url }}">
+                ← {{ prev_til.title }}
+            </a>
+        </div>
+    {% endif %}
+    
+    {% if next_index > 0 %}
+        {% assign next_til = sorted_til[next_index] %}
+        <div class="nav-next">
+            <a href="{{ next_til.url | relative_url }}">
+                {{ next_til.title }} →
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endif %} 
