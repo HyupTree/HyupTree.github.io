@@ -1,115 +1,28 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hyuptree devlog</title>
-    <link rel="icon" type="image/x-icon" href="hyup.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="hyup.ico">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="terminal">
-        <div class="terminal-header">
-            <div class="terminal-buttons">
-                <span class="btn close"></span>
-                <span class="btn minimize"></span>
-                <span class="btn maximize"></span>
-            </div>
-            <div class="terminal-title">hyuptree@devlog</div>
-        </div>
-        <div class="terminal-body">
-            <div class="terminal-split">
-                <div class="terminal-left">
-                    <div class="terminal-content">
-                        <div class="prompt-line">
-                            <span class="prompt">hyuptree@devlog:~$</span>
-                            <span class="command">cat welcome.txt</span>
-                        </div>
-                        <div class="output">
-                            <pre class="ascii-art">
- _                     _                     
-| |__  _   _ _   _ _ __| |_ _ __ ___  ___ 
-| '_ \| | | | | | | '_ \ __| '__/ _ \/ _ \
-| | | | |_| | |_| | |_) | |_| | |  __/  __/
-|_| |_|\__, |\__,_| .__/ \__|_|  \___|\___|
-       |___/      |_|                     
+---
+layout: default
+title: 메인
+---
 
-     _            _             
-  __| | _____   _| | ___   __ _ 
- / _` |/ _ \ \ / / |/ _ \ / _` |
-| (_| |  __/\ V /| | (_) | (_| |
- \__,_|\___| \_/ |_|\___/ \__, |
-                          |___/ 
-                        </pre>
-                            <p class="welcome-text">환영합니다! hyuptree의 개발 로그에 오신 것을 환영합니다.</p>
-                        </div>
-                        
-                        <div class="prompt-line">
-                            <span class="prompt">hyuptree@devlog:~$</span>
-                            <span class="command">ls -la</span>
-                        </div>
-                        <div class="output">
-                            <div class="file-list">
-                                <div class="file-item" onclick="openSectionFromFile('about', event)">
-                                    <span class="file-icon">📁</span>
-                                    <span class="name">about</span>
-                                </div>
-                                <div class="file-item" onclick="openPostsSection(event)">
-                                    <span class="file-icon">📝</span>
-                                    <span class="name">posts</span>
-                                </div>
-                                <div class="file-item" onclick="openSectionFromFile('projects', event)">
-                                    <span class="file-icon">🚀</span>
-                                    <span class="name">projects</span>
-                                </div>
-                                <div class="file-item" onclick="openSectionFromFile('contact', event)">
-                                    <span class="file-icon">📧</span>
-                                    <span class="name">contact</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="prompt-line">
-                            <span class="prompt">hyuptree@devlog:~$</span>
-                            <span class="cursor">_</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="terminal-divider"></div>
-                
-                <div class="terminal-right">
-                    <div class="right-panel-header">
-                        <span class="panel-title">📄 Content Viewer</span>
-                        <span class="panel-close" onclick="closeRightPanel()">✕</span>
-                    </div>
-                    <div id="content-section" class="content-section">
-                        <div class="welcome-message">
-                            <h3>👈 왼쪽 메뉴를 클릭하여 내용을 확인하세요</h3>
-                            <p>about/, posts/, projects/, contact.txt 중 하나를 선택해주세요.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="welcome-message">
+    <h3>👈 왼쪽 메뉴를 클릭하여 내용을 확인하세요</h3>
+    <p>about, posts, til, projects, contact 중 하나를 선택해주세요.</p>
+    
+    <div class="recent-content">
+        <h4>📝 최근 포스트</h4>
+        {% for post in site.posts limit:3 %}
+        <div class="recent-item">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
         </div>
-        <div class="terminal-footer">
-            <div class="status-bar">
-                <span>Connected to GitHub Pages</span>
-                <span>Last Update: <span id="last-update"></span></span>
-            </div>
+        {% endfor %}
+        
+        <h4>📚 최근 TIL</h4>
+        {% assign recent_til = site.til | sort: 'date' | reverse %}
+        {% for til in recent_til limit:3 %}
+        <div class="recent-item">
+            <a href="{{ til.url | relative_url }}">{{ til.title }}</a>
+            <span class="date">{{ til.date | date: "%Y-%m-%d" }}</span>
         </div>
+        {% endfor %}
     </div>
-    
-    <button class="back-to-menu" onclick="scrollToMenu()" title="메뉴로 돌아가기">
-        ↑ Menu
-    </button>
-    
-    <script src="script.js"></script>
-    <script src="blog-manager.js"></script>
-    <script src="content-manager.js"></script>
-</body>
-</html> 
+</div> 

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ '/hyup.ico' | relative_url }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ '/hyup.ico' | relative_url }}">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- SEO -->
+    {% seo %}
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="btn close"></span>
+                <span class="btn minimize"></span>
+                <span class="btn maximize"></span>
+            </div>
+            <div class="terminal-title">hyuptree@devlog</div>
+        </div>
+        <div class="terminal-body">
+            <div class="terminal-split">
+                <div class="terminal-left">
+                    <div class="terminal-content">
+                        <!-- 환영 메시지 (메인 페이지에서만) -->
+                        {% if page.url == "/" %}
+                        <div class="prompt-line">
+                            <span class="prompt">hyuptree@devlog:~$</span>
+                            <span class="command">cat welcome.txt</span>
+                        </div>
+                        <div class="output">
+                            <pre class="ascii-art">
+ _                     _                     
+| |__  _   _ _   _ _ __| |_ _ __ ___  ___ 
+| '_ \| | | | | | | '_ \ __| '__/ _ \/ _ \
+| | | | |_| | |_| | |_) | |_| | |  __/  __/
+|_| |_|\__, |\__,_| .__/ \__|_|  \___|\___|
+       |___/      |_|                     
+
+     _            _             
+  __| | _____   _| | ___   __ _ 
+ / _` |/ _ \ \ / / |/ _ \ / _` |
+| (_| |  __/\ V /| | (_) | (_| |
+ \__,_|\___| \_/ |_|\___/ \__, |
+                          |___/ 
+                            </pre>
+                            <p class="welcome-text">환영합니다! hyuptree의 개발 로그에 오신 것을 환영합니다.</p>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="prompt-line">
+                            <span class="prompt">hyuptree@devlog:~$</span>
+                            <span class="command">ls -la</span>
+                        </div>
+                        <div class="output">
+                            <div class="file-list">
+                                {% for nav in site.navigation %}
+                                <div class="file-item" onclick="location.href='{{ nav.url | relative_url }}'">
+                                    <span class="file-icon">
+                                        {% case nav.title %}
+                                        {% when 'About' %}📁
+                                        {% when 'Posts' %}📝
+                                        {% when 'TIL' %}📚
+                                        {% when 'Projects' %}🚀
+                                        {% when 'Contact' %}📧
+                                        {% endcase %}
+                                    </span>
+                                    <span class="name">{{ nav.title | downcase }}</span>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <div class="prompt-line">
+                            <span class="prompt">hyuptree@devlog:~$</span>
+                            <span class="cursor">_</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="terminal-divider"></div>
+                
+                <div class="terminal-right">
+                    <div class="right-panel-header">
+                        <span class="panel-title">📄 {{ page.title | default: "Content Viewer" }}</span>
+                        {% unless page.url == "/" %}
+                        <span class="panel-close" onclick="history.back()">✕</span>
+                        {% endunless %}
+                    </div>
+                    <div id="content-section" class="content-section active">
+                        {{ content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="terminal-footer">
+            <div class="status-bar">
+                <span>Connected to GitHub Pages</span>
+                <span>Last Update: <span id="last-update"></span></span>
+            </div>
+        </div>
+    </div>
+    
+    <button class="back-to-menu" onclick="location.href='{{ '/' | relative_url }}'" title="메인으로 돌아가기">
+        ↑ Home
+    </button>
+    
+    <!-- JavaScript 파일 로드 -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html> 

@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<h2>🚀 {{ page.title }}</h2>
+<div class="prompt-line">
+    <span class="prompt">hyuptree@devlog:~/projects/{{ page.title | slugify }}$</span>
+    <span class="command">cat README.md</span>
+</div>
+<div class="output">
+    <div class="project-detail">
+        <div class="project-meta">
+            <div class="project-tech">
+                <strong>Tech Stack:</strong> {{ page.tech_stack }}
+            </div>
+            <div class="project-status">
+                <strong>Status:</strong> 
+                <span class="status-badge status-{{ page.status }}">{{ page.status }}</span>
+            </div>
+        </div>
+        
+        <div class="project-content">
+            {{ content }}
+        </div>
+        
+        <div class="project-links">
+            {% if page.github_url and page.github_url != "" %}
+            <a href="{{ page.github_url }}" class="project-link" target="_blank">
+                📁 View on GitHub
+            </a>
+            {% endif %}
+            
+            {% if page.demo_url and page.demo_url != "" %}
+            <a href="{{ page.demo_url }}" class="project-link" target="_blank">
+                🚀 Live Demo
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="prompt-line">
+    <span class="prompt">hyuptree@devlog:~/projects/{{ page.title | slugify }}$</span>
+    <span class="command">cd ..</span>
+</div>
+<div class="output">
+    <a href="{{ '/projects/' | relative_url }}" class="back-link">← 프로젝트 목록으로 돌아가기</a>
+</div> 

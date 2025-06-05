@@ -1,0 +1,39 @@
+---
+layout: default
+title: Today I Learned
+permalink: /til/
+---
+
+<h2>📚 Today I Learned</h2>
+<div class="prompt-line">
+    <span class="prompt">hyuptree@devlog:~/til$</span>
+    <span class="command">find . -name "*.md" -exec ls -lt {} \;</span>
+</div>
+<div class="output">
+    {% assign sorted_til = site.til | sort: 'date' | reverse %}
+    {% for til in sorted_til %}
+    <div class="til-item">
+        <div class="til-title">
+            <a href="{{ til.url | relative_url }}">
+                [{{ til.date | date: "%Y.%m.%d" }}] {{ til.title }}
+            </a>
+        </div>
+        <div class="til-date">-rw-r--r-- 1 user user {{ til.content | size }} {{ til.date | date: "%b %d %H:%M" }}</div>
+        <div class="til-excerpt">{{ til.excerpt | strip_html | truncate: 150 }}</div>
+        {% if til.subject %}
+        <div class="til-subject">📖 {{ til.subject }}</div>
+        {% endif %}
+        {% if til.tags %}
+        <div class="til-tags">
+            {% for tag in til.tags %}
+            <span class="tag">#{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    
+    {% if site.til.size == 0 %}
+    <p>아직 작성된 TIL이 없습니다.</p>
+    {% endif %}
+</div> 

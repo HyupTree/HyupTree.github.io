@@ -1,11 +1,19 @@
-# VSCode settings
+# VS Code
 .vscode/
 
-# macOS
-.DS_Store
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
 
-# Node modules (if needed in future)
-node_modules/
+# Ruby/Bundler
+Gemfile.lock
+vendor/
+
+# OS
+.DS_Store
+Thumbs.db
 
 # Logs
 *.log

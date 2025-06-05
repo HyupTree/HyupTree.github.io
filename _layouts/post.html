@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<h2>📝 {{ page.title }}</h2>
+<div class="post-meta">
+    <div class="prompt-line">
+        <span class="prompt">hyuptree@devlog:~/posts$</span>
+        <span class="command">cat {{ page.title | slugify }}.md</span>
+    </div>
+    <div class="post-date">작성일: {{ page.date | date: "%Y-%m-%d" }}</div>
+    {% if page.author %}
+    <div class="post-author">작성자: {{ page.author }}</div>
+    {% endif %}
+    {% if page.categories %}
+    <div class="post-categories">
+        카테고리: 
+        {% for category in page.categories %}
+        <span class="category">{{ category }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if page.tags %}
+    <div class="post-tags">
+        태그: 
+        {% for tag in page.tags %}
+        <span class="tag">#{{ tag }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="post-content">
+    {{ content }}
+</div>
+
+<div class="post-navigation">
+    {% if page.previous.url %}
+    <div class="nav-previous">
+        <a href="{{ page.previous.url | relative_url }}">
+            ← {{ page.previous.title }}
+        </a>
+    </div>
+    {% endif %}
+    
+    {% if page.next.url %}
+    <div class="nav-next">
+        <a href="{{ page.next.url | relative_url }}">
+            {{ page.next.title }} →
+        </a>
+    </div>
+    {% endif %}
+</div> 

@@ -602,4 +602,96 @@ body {
     background: #00ffff;
     box-shadow: 0 0 15px #00ff0050;
     transform: translateY(-2px);
+}
+
+/* TIL 관련 스타일 */
+.til-item {
+    margin: 15px 0;
+    padding: 15px;
+    background: #0a0a0a;
+    border: 1px solid #00ff0030;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.til-item:hover {
+    background: #111111;
+    border-color: #00ff00;
+    box-shadow: 0 0 15px #00ff0020;
+}
+
+.til-title {
+    color: #00ffff;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.til-date {
+    color: #ff00ff;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.til-excerpt {
+    color: #cccccc;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* TIL 포스트 상세 페이지 스타일 */
+.til-content h3 {
+    color: #ffff00;
+    margin: 20px 0 10px 0;
+    border-bottom: 1px solid #ffff0030;
+    padding-bottom: 5px;
+}
+
+.til-content h4 {
+    color: #00ffff;
+    margin: 15px 0 8px 0;
+}
+
+.til-content code {
+    background: #1a1a1a;
+    color: #00ff00;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.til-content pre {
+    background: #0a0a0a;
+    border: 1px solid #00ff0030;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.til-content pre code {
+    background: none;
+    padding: 0;
+    color: #00ff00;
+}
+
+.til-content ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.til-content li {
+    margin: 5px 0;
+    color: #cccccc;
+}
+
+.til-content a {
+    color: #00ffff;
+    text-decoration: none;
+}
+
+.til-content a:hover {
+    color: #ffff00;
+    text-shadow: 0 0 5px #ffff0050;
 } 

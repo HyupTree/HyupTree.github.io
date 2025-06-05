@@ -1,0 +1,41 @@
+---
+layout: default
+title: About Me
+permalink: /about/
+---
+
+<h2>📋 About Me</h2>
+<div class="prompt-line">
+    <span class="prompt">hyuptree@devlog:~/about$</span>
+    <span class="command">whoami</span>
+</div>
+<div class="output">
+    <p>안녕하세요! hyuptree입니다.</p>
+    <p>레트로 터미널 스타일을 좋아하는 개발자로, 새로운 기술을 배우고 공유하는 것을 즐깁니다.</p>
+</div>
+
+<div class="prompt-line">
+    <span class="prompt">hyuptree@devlog:~/about$</span>
+    <span class="command">cat skills.txt</span>
+</div>
+<div class="output">
+    <h3>🛠 Skills</h3>
+    <ul>
+        <li>Frontend: HTML, CSS, JavaScript, React, Vue.js</li>
+        <li>Backend: Node.js, Python, Java</li>
+        <li>Database: MySQL, MongoDB</li>
+        <li>Tools: Git, Docker, AWS</li>
+    </ul>
+</div>
+
+<div class="prompt-line">
+    <span class="prompt">hyuptree@devlog:~/about$</span>
+    <span class="command">history | tail -5</span>
+</div>
+<div class="output">
+    <p>2025(현재) - 끊임없이 학습 중...</p>
+    <p>2024.12 - 엘리스 입사</p>
+    <p>메타버스 성과공유회 - 최우수상</p>
+    <p>2024 관데이터 활용 공모전 - 장려상</p>
+    <p>2023.12 - 첫 프로그래밍 경험</p>
+</div> 

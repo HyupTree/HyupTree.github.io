@@ -1,0 +1,77 @@
+# Site settings
+title: hyuptree devlog
+email: hyuptree@gmail.com
+description: 레트로 터미널 스타일의 개발 블로그
+baseurl: "" # 서브 디렉토리가 있다면 "/sub-directory"
+url: "https://hyuptree.github.io" # GitHub Pages URL
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:year/:month/:day/:title/
+
+# Collections
+collections:
+  til:
+    output: true
+    permalink: /til/:year/:month/:day/:title/
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - HOW-TO-ADD-POSTS.md
+  - HOW-TO-EDIT-CONTENT.md
+
+# Site navigation
+navigation:
+  - title: About
+    url: /about/
+  - title: Posts
+    url: /posts/
+  - title: TIL
+    url: /til/
+  - title: Projects
+    url: /projects/
+  - title: Contact
+    url: /contact/
+
+# Social links
+social:
+  github: hyuptree
+  email: hyuptree@gmail.com
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "hyuptree"
+  - scope:
+      path: ""
+      type: "til"
+    values:
+      layout: "til"
+      author: "hyuptree"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+      author: "hyuptree" 

@@ -1,0 +1,35 @@
+---
+layout: default
+title: Blog Posts
+permalink: /posts/
+---
+
+<h2>📝 Blog Posts</h2>
+<div class="prompt-line">
+    <span class="prompt">hyuptree@devlog:~/posts$</span>
+    <span class="command">find . -name "*.md" -exec ls -lt {} \;</span>
+</div>
+<div class="output">
+    {% for post in site.posts %}
+    <div class="post-item">
+        <div class="post-title">
+            <a href="{{ post.url | relative_url }}">
+                [{{ post.date | date: "%Y.%m.%d" }}] {{ post.title }}
+            </a>
+        </div>
+        <div class="post-date">-rw-r--r-- 1 user user {{ post.content | size }} {{ post.date | date: "%b %d %H:%M" }}</div>
+        <div class="post-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</div>
+        {% if post.tags %}
+        <div class="post-tags">
+            {% for tag in post.tags %}
+            <span class="tag">#{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    
+    {% if site.posts.size == 0 %}
+    <p>아직 작성된 포스트가 없습니다.</p>
+    {% endif %}
+</div> 
