@@ -1,0 +1,57 @@
+---
+layout: default
+title: Contact
+permalink: /contact/
+---
+
+<h2>📧 Contact Information</h2>
+<div class="prompt-line">
+    <span class="prompt">hyuptree@devlog:~$</span>
+    <span class="command">cat contact.txt</span>
+</div>
+<div class="output">
+    <p>📧 Email: {{ site.email }}</p>
+    <p>🐙 GitHub: <a href="https://github.com/{{ site.social.github }}" target="_blank">github.com/{{ site.social.github }}</a></p>
+    <p>💼 LinkedIn: <a href="https://linkedin.com/in/hyuptree" target="_blank">linkedin.com/in/hyuptree</a></p>
+</div>
+
+<div class="prompt-line">
+    <span class="prompt">hyuptree@devlog:~$</span>
+    <span class="command">ls contact_methods/</span>
+</div>
+<div class="output">
+    <div class="contact-methods">
+        <div class="contact-item">
+            <h4>📧 이메일</h4>
+            <p>빠른 답변을 원하시면 이메일로 연락주세요!</p>
+            <a href="mailto:{{ site.email }}" class="contact-link">
+                ✉️ 이메일 보내기
+            </a>
+        </div>
+        
+        <div class="contact-item">
+            <h4>💬 GitHub Issues</h4>
+            <p>공개적인 질문이나 피드백은 여기로!</p>
+            <a href="https://github.com/{{ site.social.github }}/{{ site.social.github }}.github.io/issues/new" 
+               class="contact-link" target="_blank">
+               💭 Issues로 메시지 남기기
+            </a>
+        </div>
+        
+        <div class="contact-item">
+            <h4>💼 LinkedIn</h4>
+            <p>비즈니스 관련 연락이나 네트워킹</p>
+            <a href="https://linkedin.com/in/hyuptree" class="contact-link" target="_blank">
+                🤝 LinkedIn에서 연결하기
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="prompt-line">
+    <span class="prompt">hyuptree@devlog:~$</span>
+    <span class="command">echo "언제든지 연락 주세요!"</span>
+</div>
+<div class="output">
+    <p>개발 관련 이야기, 협업 제안, 피드백 모두 환영합니다! 🚀</p>
+</div> 
