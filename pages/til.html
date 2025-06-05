@@ -7,40 +7,293 @@ permalink: /til/
 <h2>📚 Today I Learned</h2>
 <div class="prompt-line">
     <span class="prompt">hyuptree@devlog:~/til$</span>
-    <span class="command">find . -name "*.md" -exec ls -lt {} \;</span>
+    <span class="command">ls -la --group-directories-first</span>
 </div>
 <div class="output">
-    {% assign sorted_til = site.til | sort: 'date' | reverse %}
-    {% for til in sorted_til %}
-    <div class="til-item">
-        <div class="til-title">
-            <a href="{{ til.url | relative_url }}">{{ til.title }}</a>
+    <div class="til-categories-grid">
+        <!-- 데이터 엔지니어링 카테고리 -->
+        <div class="til-category-card" data-category="data-engineering">
+            <div class="category-icon">🔧</div>
+            <h3>Data Engineering</h3>
+            <span class="category-count">
+                {% assign de_count = site.til | where: "category", "data-engineering" | size %}
+                {{ de_count }} posts
+            </span>
         </div>
-        <div class="til-date">{{ til.date | date: "%Y년 %m월 %d일" }}</div>
-        {% if til.subject %}
-        <div class="til-subject">📖 Subject: {{ til.subject }}</div>
-        {% endif %}
-        <div class="til-excerpt">{{ til.excerpt | strip_html | truncate: 150 }}</div>
-        {% if til.tags %}
-        <div class="til-tags">
-            {% for tag in til.tags %}
-            <span class="tag">#{{ tag }}</span>
-            {% endfor %}
+
+        <!-- 파이썬 카테고리 -->
+        <div class="til-category-card" data-category="python">
+            <div class="category-icon">🐍</div>
+            <h3>Python</h3>
+            <span class="category-count">
+                {% assign py_count = site.til | where: "category", "python" | size %}
+                {{ py_count }} posts
+            </span>
         </div>
-        {% endif %}
-        <div class="til-links">
-            <a href="{{ til.url | relative_url }}" class="project-link">학습 내용 보기</a>
+
+        <!-- 데이터베이스 카테고리 -->
+        <div class="til-category-card" data-category="database">
+            <div class="category-icon">🗄️</div>
+            <h3>Database</h3>
+            <span class="category-count">
+                {% assign db_count = site.til | where: "category", "database" | size %}
+                {{ db_count }} posts
+            </span>
+        </div>
+
+        <!-- 자바 카테고리 -->
+        <div class="til-category-card" data-category="java">
+            <div class="category-icon">☕</div>
+            <h3>Java</h3>
+            <span class="category-count">
+                {% assign java_count = site.til | where: "category", "java" | size %}
+                {{ java_count }} posts
+            </span>
         </div>
     </div>
-    {% endfor %}
     
-    {% if site.til.size == 0 %}
+    <!-- 전체 보기 버튼 -->
+    <div class="show-all-btn">
+        <button id="show-all-btn" class="all-posts-btn">📋 전체 보기</button>
+    </div>
+</div>
+
+<!-- 선택된 카테고리의 포스트들 -->
+<div id="category-posts" class="category-posts-section">
     <div class="prompt-line">
         <span class="prompt">hyuptree@devlog:~/til$</span>
-        <span class="command">echo "No TIL found"</span>
+        <span class="command" id="current-category-cmd">cat README.md</span>
     </div>
     <div class="output">
-        <p>아직 작성된 TIL이 없습니다.</p>
+        <!-- 전체 포스트 -->
+        <div id="all-posts" class="posts-container active">
+            <h3>📋 전체 TIL 포스트</h3>
+            <div class="posts-grid">
+                {% assign all_til = site.til | sort: 'date' | reverse %}
+                {% for til in all_til %}
+                <div class="til-post-card">
+                    <div class="post-header">
+                        <div class="post-category">
+                            {% case til.category %}
+                              {% when 'data-engineering' %}
+                                🔧 DE
+                              {% when 'database' %}
+                                🗄️ DB
+                              {% when 'python' %}
+                                🐍 PY
+                              {% when 'java' %}
+                                ☕ JAVA
+                              {% else %}
+                                📖 {{ til.category | upcase }}
+                            {% endcase %}
+                        </div>
+                        <div class="post-date">{{ til.date | date: "%m/%d" }}</div>
+                    </div>
+                    <h4><a href="{{ til.url | relative_url }}">{{ til.title }}</a></h4>
+                    <p>{{ til.excerpt | strip_html | truncate: 80 }}</p>
+                    <div class="post-tags">
+                        {% for tag in til.tags limit:3 %}
+                        <span class="tag">#{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 데이터 엔지니어링 포스트 -->
+        <div id="data-engineering-posts" class="posts-container">
+            <h3>🔧 데이터 엔지니어링</h3>
+            <div class="posts-grid">
+                {% assign de_posts = site.til | where: "category", "data-engineering" | sort: 'date' | reverse %}
+                {% if de_posts.size > 0 %}
+                    {% for til in de_posts %}
+                    <div class="til-post-card">
+                        <div class="post-header">
+                            <div class="post-category">🔧 DATA-ENGINEERING</div>
+                            <div class="post-date">{{ til.date | date: "%m/%d" }}</div>
+                        </div>
+                        <h4><a href="{{ til.url | relative_url }}">{{ til.title }}</a></h4>
+                        <p>{{ til.excerpt | strip_html | truncate: 80 }}</p>
+                        <div class="post-tags">
+                            {% for tag in til.tags limit:3 %}
+                            <span class="tag">#{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-category">
+                        <p>아직 데이터 엔지니어링 관련 TIL이 없습니다.</p>
+                        <small>새로운 학습 내용을 추가해보세요!</small>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- 파이썬 포스트 -->
+        <div id="python-posts" class="posts-container">
+            <h3>🐍 파이썬</h3>
+            <div class="posts-grid">
+                {% assign py_posts = site.til | where: "category", "python" | sort: 'date' | reverse %}
+                {% if py_posts.size > 0 %}
+                    {% for til in py_posts %}
+                    <div class="til-post-card">
+                        <div class="post-header">
+                            <div class="post-category">🐍 PYTHON</div>
+                            <div class="post-date">{{ til.date | date: "%m/%d" }}</div>
+                        </div>
+                        <h4><a href="{{ til.url | relative_url }}">{{ til.title }}</a></h4>
+                        <p>{{ til.excerpt | strip_html | truncate: 80 }}</p>
+                        <div class="post-tags">
+                            {% for tag in til.tags limit:3 %}
+                            <span class="tag">#{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-category">
+                        <p>아직 파이썬 관련 TIL이 없습니다.</p>
+                        <small>새로운 학습 내용을 추가해보세요!</small>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- 데이터베이스 포스트 -->
+        <div id="database-posts" class="posts-container">
+            <h3>🗄️ 데이터베이스</h3>
+            <div class="posts-grid">
+                {% assign db_posts = site.til | where: "category", "database" | sort: 'date' | reverse %}
+                {% if db_posts.size > 0 %}
+                    {% for til in db_posts %}
+                    <div class="til-post-card">
+                        <div class="post-header">
+                            <div class="post-category">🗄️ DATABASE</div>
+                            <div class="post-date">{{ til.date | date: "%m/%d" }}</div>
+                        </div>
+                        <h4><a href="{{ til.url | relative_url }}">{{ til.title }}</a></h4>
+                        <p>{{ til.excerpt | strip_html | truncate: 80 }}</p>
+                        <div class="post-tags">
+                            {% for tag in til.tags limit:3 %}
+                            <span class="tag">#{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-category">
+                        <p>아직 데이터베이스 관련 TIL이 없습니다.</p>
+                        <small>새로운 학습 내용을 추가해보세요!</small>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- 자바 포스트 -->
+        <div id="java-posts" class="posts-container">
+            <h3>☕ 자바</h3>
+            <div class="posts-grid">
+                {% assign java_posts = site.til | where: "category", "java" | sort: 'date' | reverse %}
+                {% if java_posts.size > 0 %}
+                    {% for til in java_posts %}
+                    <div class="til-post-card">
+                        <div class="post-header">
+                            <div class="post-category">☕ JAVA</div>
+                            <div class="post-date">{{ til.date | date: "%m/%d" }}</div>
+                        </div>
+                        <h4><a href="{{ til.url | relative_url }}">{{ til.title }}</a></h4>
+                        <p>{{ til.excerpt | strip_html | truncate: 80 }}</p>
+                        <div class="post-tags">
+                            {% for tag in til.tags limit:3 %}
+                            <span class="tag">#{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-category">
+                        <p>아직 자바 관련 TIL이 없습니다.</p>
+                        <small>새로운 학습 내용을 추가해보세요!</small>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
     </div>
-    {% endif %}
-</div> 
+</div>
+
+<script>
+// 간단하고 확실한 카테고리 필터링
+function selectCategory(category) {
+    console.log('카테고리 선택:', category);
+    
+    // 모든 포스트 컨테이너 숨기기
+    const allContainers = document.querySelectorAll('.posts-container');
+    allContainers.forEach(container => {
+        container.style.display = 'none';
+        container.classList.remove('active');
+    });
+    
+    // 모든 카테고리 카드 비활성화
+    const allCards = document.querySelectorAll('.til-category-card');
+    allCards.forEach(card => {
+        card.classList.remove('active');
+    });
+    
+    // 선택된 카테고리 컨테이너 보이기
+    let targetId;
+    if (category === 'all') {
+        targetId = 'all-posts';
+        document.getElementById('current-category-cmd').textContent = 'cat README.md';
+    } else {
+        targetId = category + '-posts';
+        document.getElementById('current-category-cmd').textContent = `cd ${category} && ls -la`;
+        
+        // 해당 카테고리 카드 활성화
+        const activeCard = document.querySelector(`[data-category="${category}"]`);
+        if (activeCard) {
+            activeCard.classList.add('active');
+        }
+    }
+    
+    const targetContainer = document.getElementById(targetId);
+    if (targetContainer) {
+        targetContainer.style.display = 'block';
+        targetContainer.classList.add('active');
+        console.log(category + ' 카테고리 표시됨');
+    } else {
+        console.error('컨테이너를 찾을 수 없음:', targetId);
+    }
+}
+
+// 페이지 로드 후 이벤트 리스너 설정
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('페이지 로드됨, 이벤트 설정 시작');
+    
+    // 카테고리 카드들에 클릭 이벤트 추가
+    const categoryCards = document.querySelectorAll('.til-category-card');
+    categoryCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        card.addEventListener('click', function() {
+            selectCategory(category);
+        });
+        console.log('카드 이벤트 설정:', category);
+    });
+    
+    // 전체 보기 버튼 이벤트
+    const showAllBtn = document.getElementById('show-all-btn');
+    if (showAllBtn) {
+        showAllBtn.addEventListener('click', function() {
+            selectCategory('all');
+        });
+        console.log('전체 보기 버튼 이벤트 설정됨');
+    }
+    
+    // 초기에 전체 보기로 설정
+    selectCategory('all');
+});
+
+// 직접 호출 가능한 전역 함수 (디버깅용)
+window.selectCategory = selectCategory;
+</script> 

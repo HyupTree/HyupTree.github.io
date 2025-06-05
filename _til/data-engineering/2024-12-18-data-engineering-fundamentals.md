@@ -1,9 +1,10 @@
 ---
 layout: til
 title: "데이터 엔지니어링 기초 개념 정리"
-date: 2024-12-18 09:20:00 +0900
+date: 2024-12-18
+category: data-engineering
 subject: "Data Engineering"
-tags: [데이터엔지니어링, ETL, 파이프라인, Apache-Spark, Airflow]
+tags: [data-engineering, ETL, 파이프라인, Apache-Spark, Airflow]
 excerpt: "데이터 엔지니어링의 핵심 개념과 ETL 파이프라인 설계 원칙을 학습했다. 확장성과 신뢰성을 동시에 고려해야 하는 복합적인 업무구나."
 ---
 

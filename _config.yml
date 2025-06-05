@@ -14,7 +14,7 @@ permalink: /posts/:year/:title/
 collections:
   til:
     output: true
-    permalink: /til/:year/:title/
+    permalink: /til/:path/
   projects:
     output: true
     permalink: /projects/:title/
@@ -36,6 +36,8 @@ exclude:
   - vendor/ruby/
   - HOW-TO-ADD-POSTS.md
   - HOW-TO-EDIT-CONTENT.md
+  - HOW-TO-ADD-TIL.md
+  - HOW-TO-ADD-PROJECTS.md
 
 # Site navigation
 navigation:
