@@ -12,6 +12,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
     
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,6 +118,13 @@
     </div>
     
     <!-- JavaScript 파일 로드 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    <script>
+        // Syntax highlighting 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            hljs.highlightAll();
+        });
+    </script>
 </body>
 </html> 

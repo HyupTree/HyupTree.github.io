@@ -133,6 +133,11 @@ class TerminalUI {
                 
                 // 새로 로드된 콘텐츠의 내부 링크 처리
                 this.setupInternalLinks();
+                
+                // Syntax highlighting 재적용
+                if (typeof hljs !== 'undefined') {
+                    hljs.highlightAll();
+                }
             } else {
                 throw new Error('Content section not found');
             }

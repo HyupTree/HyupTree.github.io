@@ -762,26 +762,158 @@ body {
 }
 
 .til-content code {
-  background: var(--bg-header);
-  color: var(--primary-green);
-  padding: 2px 4px;
-  border-radius: 3px;
-  font-size: 13px;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  border: 1px solid #404040;
 }
 
 .til-content pre {
-  background: var(--bg-darker);
-  border: 1px solid #00ff0030;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 15px 0;
+  background: #1e1e1e;
+  border: 1px solid #404040;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 0;
   overflow-x: auto;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  line-height: 1.5;
+  position: relative;
+}
+
+.til-content pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #007acc, #4fc3f7, #007acc);
+  opacity: 0.5;
 }
 
 .til-content pre code {
   background: none;
   padding: 0;
-  color: var(--primary-green);
+  color: #d4d4d4;
+  border: none;
+  font-size: 14px;
+}
+
+/* VSCode 스타일 Syntax Highlighting - 모든 영역 적용 */
+.til-content pre code .hljs-comment,
+.til-content pre code .hljs-quote {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.til-content pre code .hljs-keyword,
+.til-content pre code .hljs-selector-tag,
+.til-content pre code .hljs-literal {
+  color: #569cd6;
+}
+
+.til-content pre code .hljs-string,
+.til-content pre code .hljs-attr {
+  color: #ce9178;
+}
+
+.til-content pre code .hljs-number,
+.til-content pre code .hljs-regexp {
+  color: #b5cea8;
+}
+
+.til-content pre code .hljs-built_in,
+.til-content pre code .hljs-symbol,
+.til-content pre code .hljs-variable,
+.til-content pre code .hljs-template-variable {
+  color: #4ec9b0;
+}
+
+.til-content pre code .hljs-function,
+.til-content pre code .hljs-title {
+  color: #dcdcaa;
+}
+
+.til-content pre code .hljs-params {
+  color: #9cdcfe;
+}
+
+.til-content pre code .hljs-tag {
+  color: #569cd6;
+}
+
+.til-content pre code .hljs-name {
+  color: #4fc1ff;
+}
+
+.til-content pre code .hljs-attribute {
+  color: #9cdcfe;
+}
+
+.til-content pre code .hljs-class .hljs-title {
+  color: #4ec9b0;
+}
+
+.til-content pre code .hljs-meta {
+  color: #9cdcfe;
+}
+
+.til-content pre code .hljs-doctag {
+  color: #569cd6;
+}
+
+.til-content pre code .hljs-type {
+  color: #4ec9b0;
+}
+
+/* CSS 특화 스타일 */
+.til-content pre code .hljs-selector-class {
+  color: #d7ba7d;
+}
+
+.til-content pre code .hljs-selector-id {
+  color: #d7ba7d;
+}
+
+.til-content pre code .hljs-selector-pseudo {
+  color: #d7ba7d;
+}
+
+.til-content pre code .hljs-property {
+  color: #9cdcfe;
+}
+
+.til-content pre code .hljs-value {
+  color: #ce9178;
+}
+
+/* HTML 특화 스타일 */
+.til-content pre code .hljs-tag .hljs-name {
+  color: #569cd6;
+}
+
+.til-content pre code .hljs-tag .hljs-attr {
+  color: #9cdcfe;
+}
+
+.til-content pre code .hljs-tag .hljs-string {
+  color: #ce9178;
+}
+
+/* JavaScript 특화 스타일 */
+.til-content pre code .hljs-function .hljs-keyword {
+  color: #569cd6;
+}
+
+.til-content pre code .hljs-function .hljs-title {
+  color: #dcdcaa;
+}
+
+.til-content pre code .hljs-function .hljs-params {
+  color: #9cdcfe;
 }
 
 .til-content ul {
@@ -1342,4 +1474,198 @@ body {
   .til-post-card {
     padding: 15px;
   }
+}
+
+/* 모든 콘텐츠 영역의 코드 블럭에 VSCode 스타일 적용 */
+.content-section code,
+.til-content code {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  border: 1px solid #404040;
+}
+
+.content-section pre,
+.til-content pre {
+  background: #1e1e1e;
+  border: 1px solid #404040;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 0;
+  overflow-x: auto;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  line-height: 1.5;
+  position: relative;
+}
+
+.content-section pre::before,
+.til-content pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #007acc, #4fc3f7, #007acc);
+  opacity: 0.5;
+}
+
+.content-section pre code,
+.til-content pre code {
+  background: none;
+  padding: 0;
+  color: #d4d4d4;
+  border: none;
+  font-size: 14px;
+}
+
+/* VSCode 스타일 Syntax Highlighting - 모든 영역 적용 */
+.content-section pre code .hljs-comment,
+.content-section pre code .hljs-quote,
+.til-content pre code .hljs-comment,
+.til-content pre code .hljs-quote {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.content-section pre code .hljs-keyword,
+.content-section pre code .hljs-selector-tag,
+.content-section pre code .hljs-literal,
+.til-content pre code .hljs-keyword,
+.til-content pre code .hljs-selector-tag,
+.til-content pre code .hljs-literal {
+  color: #569cd6;
+}
+
+.content-section pre code .hljs-string,
+.content-section pre code .hljs-attr,
+.til-content pre code .hljs-string,
+.til-content pre code .hljs-attr {
+  color: #ce9178;
+}
+
+.content-section pre code .hljs-number,
+.content-section pre code .hljs-regexp,
+.til-content pre code .hljs-number,
+.til-content pre code .hljs-regexp {
+  color: #b5cea8;
+}
+
+.content-section pre code .hljs-built_in,
+.content-section pre code .hljs-symbol,
+.content-section pre code .hljs-variable,
+.content-section pre code .hljs-template-variable,
+.til-content pre code .hljs-built_in,
+.til-content pre code .hljs-symbol,
+.til-content pre code .hljs-variable,
+.til-content pre code .hljs-template-variable {
+  color: #4ec9b0;
+}
+
+.content-section pre code .hljs-function,
+.content-section pre code .hljs-title,
+.til-content pre code .hljs-function,
+.til-content pre code .hljs-title {
+  color: #dcdcaa;
+}
+
+.content-section pre code .hljs-params,
+.til-content pre code .hljs-params {
+  color: #9cdcfe;
+}
+
+.content-section pre code .hljs-tag,
+.til-content pre code .hljs-tag {
+  color: #569cd6;
+}
+
+.content-section pre code .hljs-name,
+.til-content pre code .hljs-name {
+  color: #4fc1ff;
+}
+
+.content-section pre code .hljs-attribute,
+.til-content pre code .hljs-attribute {
+  color: #9cdcfe;
+}
+
+.content-section pre code .hljs-class .hljs-title,
+.til-content pre code .hljs-class .hljs-title {
+  color: #4ec9b0;
+}
+
+.content-section pre code .hljs-meta,
+.til-content pre code .hljs-meta {
+  color: #9cdcfe;
+}
+
+.content-section pre code .hljs-doctag,
+.til-content pre code .hljs-doctag {
+  color: #569cd6;
+}
+
+.content-section pre code .hljs-type,
+.til-content pre code .hljs-type {
+  color: #4ec9b0;
+}
+
+/* CSS 특화 스타일 */
+.content-section pre code .hljs-selector-class,
+.til-content pre code .hljs-selector-class {
+  color: #d7ba7d;
+}
+
+.content-section pre code .hljs-selector-id,
+.til-content pre code .hljs-selector-id {
+  color: #d7ba7d;
+}
+
+.content-section pre code .hljs-selector-pseudo,
+.til-content pre code .hljs-selector-pseudo {
+  color: #d7ba7d;
+}
+
+.content-section pre code .hljs-property,
+.til-content pre code .hljs-property {
+  color: #9cdcfe;
+}
+
+.content-section pre code .hljs-value,
+.til-content pre code .hljs-value {
+  color: #ce9178;
+}
+
+/* HTML 특화 스타일 */
+.content-section pre code .hljs-tag .hljs-name,
+.til-content pre code .hljs-tag .hljs-name {
+  color: #569cd6;
+}
+
+.content-section pre code .hljs-tag .hljs-attr,
+.til-content pre code .hljs-tag .hljs-attr {
+  color: #9cdcfe;
+}
+
+.content-section pre code .hljs-tag .hljs-string,
+.til-content pre code .hljs-tag .hljs-string {
+  color: #ce9178;
+}
+
+/* JavaScript 특화 스타일 */
+.content-section pre code .hljs-function .hljs-keyword,
+.til-content pre code .hljs-function .hljs-keyword {
+  color: #569cd6;
+}
+
+.content-section pre code .hljs-function .hljs-title,
+.til-content pre code .hljs-function .hljs-title {
+  color: #dcdcaa;
+}
+
+.content-section pre code .hljs-function .hljs-params,
+.til-content pre code .hljs-function .hljs-params {
+  color: #9cdcfe;
 }

@@ -144,7 +144,7 @@ CSS의 `position: relative`, `absolute`, `fixed`의 차이점과 실제 동작 �
 
 ## 핵심 포인트
 
-### ✅ 꼭 기억할 것
+### 꼭 기억할 것
 - **Absolute는 항상 Relative 부모가 필요**
 - **Relative 부모가 없으면 body 기준으로 배치됨** ⚠️ **가장 흔한 실수!**
 - **Fixed는 뷰포트(브라우저 창) 기준으로 배치**
@@ -152,7 +152,7 @@ CSS의 `position: relative`, `absolute`, `fixed`의 차이점과 실제 동작 �
 - **top, left, bottom, right로 정확한 위치 지정 가능**
 - **음수 값으로 부모 영역 밖으로도 배치 가능**
 
-### ⚠️ 주의사항
+### 주의사항
 - `position: absolute`와 `fixed`는 문서 흐름에서 완전히 벗어남
 - 다른 요소들이 absolute/fixed 요소를 "없는 것"처럼 취급
 - **부모의 `position: relative` 설정을 깜빡하기 쉬움** (세 번째 예시 참고)
