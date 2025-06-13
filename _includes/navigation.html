@@ -21,7 +21,7 @@
     {% assign sorted_til = site.til | sort: 'date' | reverse %}
     {% for til in sorted_til %}
         {% if til.url == page.url %}
-            {% assign current_index = forloop.index %}
+            {% assign current_index = forloop.index0 %}
             {% break %}
         {% endif %}
     {% endfor %}
@@ -29,20 +29,42 @@
     {% assign prev_index = current_index | plus: 1 %}
     {% assign next_index = current_index | minus: 1 %}
     
-    {% if prev_index <= sorted_til.size %}
+    {% if prev_index < sorted_til.size %}
         {% assign prev_til = sorted_til[prev_index] %}
         <div class="nav-previous">
             <a href="{{ prev_til.url | relative_url }}">
-                ← {{ prev_til.title }}
+                <span class="nav-direction">← 이전 TIL</span>
+                <span class="nav-title">{{ prev_til.title }}</span>
+                <span class="nav-category">
+                    {% case prev_til.category %}
+                        {% when 'data-engineering' %}🔧 데이터 엔지니어링
+                        {% when 'python' %}🐍 파이썬
+                        {% when 'database' %}🗄️ 데이터베이스
+                        {% when 'java' %}☕ 자바
+                        {% when 'html-css' %}🌐 HTML/CSS
+                        {% else %}📖 {{ prev_til.category | upcase }}
+                    {% endcase %}
+                </span>
             </a>
         </div>
     {% endif %}
     
-    {% if next_index > 0 %}
+    {% if next_index >= 0 %}
         {% assign next_til = sorted_til[next_index] %}
         <div class="nav-next">
             <a href="{{ next_til.url | relative_url }}">
-                {{ next_til.title }} →
+                <span class="nav-direction">다음 TIL →</span>
+                <span class="nav-title">{{ next_til.title }}</span>
+                <span class="nav-category">
+                    {% case next_til.category %}
+                        {% when 'data-engineering' %}🔧 데이터 엔지니어링
+                        {% when 'python' %}🐍 파이썬
+                        {% when 'database' %}🗄️ 데이터베이스
+                        {% when 'java' %}☕ 자바
+                        {% when 'html-css' %}🌐 HTML/CSS
+                        {% else %}📖 {{ next_til.category | upcase }}
+                    {% endcase %}
+                </span>
             </a>
         </div>
     {% endif %}

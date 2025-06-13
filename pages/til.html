@@ -50,6 +50,16 @@ permalink: /til/
                 {{ java_count }} posts
             </span>
         </div>
+
+        <!-- HTML/CSS 카테고리 -->
+        <div class="til-category-card" data-category="html-css">
+            <div class="category-icon">🌐</div>
+            <h3>HTML/CSS</h3>
+            <span class="category-count">
+                {% assign htmlcss_count = site.til | where: "category", "html-css" | size %}
+                {{ htmlcss_count }} posts
+            </span>
+        </div>
     </div>
     
     <!-- 전체 보기 버튼 -->
@@ -215,6 +225,36 @@ permalink: /til/
                 {% else %}
                     <div class="empty-category">
                         <p>아직 자바 관련 TIL이 없습니다.</p>
+                        <small>새로운 학습 내용을 추가해보세요!</small>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- HTML/CSS 포스트 -->
+        <div id="html-css-posts" class="posts-container">
+            <h3>🌐 HTML/CSS</h3>
+            <div class="posts-grid">
+                {% assign htmlcss_posts = site.til | where: "category", "html-css" | sort: 'date' | reverse %}
+                {% if htmlcss_posts.size > 0 %}
+                    {% for til in htmlcss_posts %}
+                    <div class="til-post-card">
+                        <div class="post-header">
+                            <div class="post-category">🌐 HTML/CSS</div>
+                            <div class="post-date">{{ til.date | date: "%m/%d" }}</div>
+                        </div>
+                        <h4><a href="{{ til.url | relative_url }}">{{ til.title }}</a></h4>
+                        <p>{{ til.excerpt | strip_html | truncate: 80 }}</p>
+                        <div class="post-tags">
+                            {% for tag in til.tags limit:3 %}
+                            <span class="tag">#{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-category">
+                        <p>아직 HTML/CSS 관련 TIL이 없습니다.</p>
                         <small>새로운 학습 내용을 추가해보세요!</small>
                     </div>
                 {% endif %}

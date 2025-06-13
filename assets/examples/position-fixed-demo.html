@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Fixed 데모</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Fixed 헤더 */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Fixed 플로팅 버튼 */
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .floating-button:hover {
+            background-color: #c0392b;
+            transform: scale(1.1);
+        }
+        
+        /* 메인 콘텐츠 */
+        .main-content {
+            margin-top: 60px; /* Fixed 헤더 높이만큼 */
+            padding: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .content-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .demo-info {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 200px;
+            font-size: 14px;
+            z-index: 500;
+        }
+        
+        .demo-info h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .demo-info ul {
+            list-style-type: none;
+        }
+        
+        .demo-info li {
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .demo-info li:before {
+            content: "📌";
+            position: absolute;
+            left: 0;
+        }
+        
+        /* 스크롤 인디케이터 */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background-color: rgba(52, 152, 219, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 998;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed 헤더 -->
+    <header class="fixed-header">
+        <h1>Fixed Header - 스크롤해도 항상 여기 있어요!</h1>
+    </header>
+    
+    <!-- 데모 정보 (고정) -->
+    <div class="demo-info">
+        <h4>Fixed 요소들:</h4>
+        <ul>
+            <li>상단 헤더</li>
+            <li>플로팅 버튼</li>
+            <li>이 정보창</li>
+            <li>스크롤 표시</li>
+        </ul>
+    </div>
+    
+    <!-- 스크롤 인디케이터 -->
+    <div class="scroll-indicator">
+        ⬇️ 스크롤 해보세요!
+    </div>
+    
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <h2>CSS Position Fixed 데모</h2>
+        <p>아래로 스크롤하면서 Fixed 요소들이 어떻게 동작하는지 확인해보세요!</p>
+        
+        <div class="content-section">
+            <div>
+                <h3>섹션 1</h3>
+                <p>이 콘텐츠는 일반적인 문서 흐름을 따릅니다.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div>
+                <h3>섹션 2</h3>
+                <p>스크롤해도 Fixed 요소들은 같은 위치에 있습니다.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div>
+                <h3>섹션 3</h3>
+                <p>Fixed는 뷰포트(브라우저 창) 기준으로 배치됩니다.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div>
+                <h3>섹션 4</h3>
+                <p>Absolute와 달리 부모 요소의 position에 영향받지 않습니다.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div>
+                <h3>섹션 5</h3>
+                <p>네비게이션, 플로팅 버튼, 알림 등에 주로 사용됩니다.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div>
+                <h3>섹션 6</h3>
+                <p>z-index로 다른 요소들과의 겹침 순서를 조정할 수 있습니다.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div>
+                <h3>섹션 7</h3>
+                <p>모바일에서도 동일하게 동작합니다.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div>
+                <h3>섹션 8 - 마지막</h3>
+                <p>끝까지 스크롤했지만 Fixed 요소들은 여전히 고정되어 있습니다!</p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Fixed 플로팅 버튼 -->
+    <button class="floating-button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑
+    </button>
+    
+    <script>
+        // 스크롤 위치에 따라 스크롤 인디케이터 업데이트
+        window.addEventListener('scroll', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            
+            if (scrollPercent < 90) {
+                scrollIndicator.textContent = `⬇️ ${scrollPercent}% 스크롤됨`;
+            } else {
+                scrollIndicator.textContent = '🎉 끝까지 도달!';
+            }
+        });
+    </script>
+</body>
+</html> 
