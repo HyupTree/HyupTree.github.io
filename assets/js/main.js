@@ -101,6 +101,16 @@ class TerminalUI {
                 const contentToInsert = newContent.innerHTML || newContent.textContent;
                 this.contentSection.innerHTML = contentToInsert;
                 
+                // til 페이지라면 til-filter.js를 동적으로 로드
+                if (url.includes('/til')) {
+                    const oldScript = document.getElementById('til-filter-script');
+                    if (oldScript) oldScript.remove();
+                    const script = document.createElement('script');
+                    script.src = '/assets/js/til-filter.js';
+                    script.id = 'til-filter-script';
+                    document.body.appendChild(script);
+                }
+                
                 // 패널 제목 업데이트
                 this.updatePanelTitle(title);
                 
