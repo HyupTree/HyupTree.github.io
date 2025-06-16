@@ -1669,3 +1669,151 @@ body {
 .til-content pre code .hljs-function .hljs-params {
   color: #9cdcfe;
 }
+
+/* ===== 터미널 스타일 표 (Terminal Style Tables) ===== */
+.comparison-table-wrapper {
+  margin: 20px 0;
+  overflow-x: auto;
+  border: 2px solid var(--primary-green);
+  border-radius: 8px;
+  background: var(--bg-terminal);
+  box-shadow: 0 0 20px #00ff0030;
+}
+
+.terminal-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  background: var(--bg-terminal);
+  color: var(--primary-green);
+}
+
+.terminal-comparison-table th {
+  background: var(--bg-dark);
+  border: 1px solid var(--primary-green);
+  padding: 15px 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 0 0 10px var(--primary-green);
+}
+
+.table-header-category {
+  background: var(--bg-header) !important;
+  color: var(--primary-cyan) !important;
+  text-shadow: 0 0 10px var(--primary-cyan) !important;
+}
+
+.table-header-supervised {
+  background: linear-gradient(135deg, #001100, #002200) !important;
+  color: #00ff88 !important;
+  text-shadow: 0 0 10px #00ff88 !important;
+}
+
+.table-header-unsupervised {
+  background: linear-gradient(135deg, #110011, #220022) !important;
+  color: var(--primary-magenta) !important;
+  text-shadow: 0 0 10px var(--primary-magenta) !important;
+}
+
+.terminal-comparison-table td {
+  border: 1px solid #00ff0050;
+  padding: 12px;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.table-category {
+  background: var(--bg-darker);
+  color: var(--primary-cyan);
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--primary-cyan);
+  border-right: 2px solid var(--primary-cyan) !important;
+}
+
+.table-supervised {
+  background: #001100;
+  color: #ccffcc;
+  border-right: 1px solid #00ff0050;
+}
+
+.table-unsupervised {
+  background: #110011;
+  color: #ffccff;
+}
+
+.table-detail {
+  color: var(--text-gray-light);
+  font-size: 12px;
+}
+
+.algorithm-tag {
+  display: inline-block;
+  background: #333;
+  color: var(--primary-yellow);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  margin: 1px;
+  border: 1px solid #ffff0050;
+  text-shadow: 0 0 5px var(--primary-yellow);
+}
+
+.status-fast {
+  color: #00ff88;
+  font-weight: bold;
+  text-shadow: 0 0 8px #00ff88;
+}
+
+.status-slow {
+  color: #ff8800;
+  font-weight: bold;
+  text-shadow: 0 0 8px #ff8800;
+}
+
+.status-easy {
+  color: #00ff88;
+  font-weight: bold;
+  text-shadow: 0 0 8px #00ff88;
+}
+
+.status-hard {
+  color: #ff4444;
+  font-weight: bold;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+.terminal-comparison-table tr:hover {
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.terminal-comparison-table tr:hover .table-category {
+  background: #0f0f0f;
+  text-shadow: 0 0 12px var(--primary-cyan);
+}
+
+.terminal-comparison-table tr:hover .table-supervised {
+  background: #002200;
+}
+
+.terminal-comparison-table tr:hover .table-unsupervised {
+  background: #220022;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .comparison-table-wrapper {
+    font-size: 12px;
+  }
+  
+  .terminal-comparison-table th,
+  .terminal-comparison-table td {
+    padding: 8px 6px;
+  }
+  
+  .algorithm-tag {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+}
