@@ -111,7 +111,7 @@ permalink: /til/
                                 📖 {{ til.category | upcase }}
                             {% endcase %}
                         </div>
-                        <div class="post-date">{{ til.date | date: "%m/%d" }}</div>
+                        <div class="post-date">{{ til.date | date: "%Y/%m/%d" }}</div>
                     </div>
                     <h4><a href="{{ til.url | relative_url }}">{{ til.title }}</a></h4>
                     <p>{{ til.excerpt | strip_html | truncate: 80 }}</p>
