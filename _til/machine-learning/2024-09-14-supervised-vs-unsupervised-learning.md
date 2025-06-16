@@ -1,7 +1,7 @@
 ---
 layout: til
 title: "지도학습 vs 비지도학습 - 머신러닝의 두 가지 접근법"
-date: 2024-11-18
+date: 2024-09-14
 category: machine-learning
 tags: [supervised-learning, unsupervised-learning, machine-learning, classification, clustering]
 ---
