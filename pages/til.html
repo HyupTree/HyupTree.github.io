@@ -60,6 +60,16 @@ permalink: /til/
                 {{ htmlcss_count }} posts
             </span>
         </div>
+
+        <!-- 머신러닝 카테고리 -->
+        <div class="til-category-card" data-category="machine-learning">
+            <div class="category-icon">🤖</div>
+            <h3>Machine Learning</h3>
+            <span class="category-count">
+                {% assign ml_count = site.til | where: "category", "machine-learning" | size %}
+                {{ ml_count }} posts
+            </span>
+        </div>
     </div>
     
     <!-- 전체 보기 버튼 -->
@@ -93,6 +103,10 @@ permalink: /til/
                                 🐍 PY
                               {% when 'java' %}
                                 ☕ JAVA
+                              {% when 'html-css' %}
+                                🌐 HTML/CSS
+                              {% when 'machine-learning' %}
+                                🤖 ML
                               {% else %}
                                 📖 {{ til.category | upcase }}
                             {% endcase %}
@@ -255,6 +269,36 @@ permalink: /til/
                 {% else %}
                     <div class="empty-category">
                         <p>아직 HTML/CSS 관련 TIL이 없습니다.</p>
+                        <small>새로운 학습 내용을 추가해보세요!</small>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- 머신러닝 포스트 -->
+        <div id="machine-learning-posts" class="posts-container">
+            <h3>🤖 머신러닝</h3>
+            <div class="posts-grid">
+                {% assign ml_posts = site.til | where: "category", "machine-learning" | sort: 'date' | reverse %}
+                {% if ml_posts.size > 0 %}
+                    {% for til in ml_posts %}
+                    <div class="til-post-card">
+                        <div class="post-header">
+                            <div class="post-category">🤖 MACHINE-LEARNING</div>
+                            <div class="post-date">{{ til.date | date: "%m/%d" }}</div>
+                        </div>
+                        <h4><a href="{{ til.url | relative_url }}">{{ til.title }}</a></h4>
+                        <p>{{ til.excerpt | strip_html | truncate: 80 }}</p>
+                        <div class="post-tags">
+                            {% for tag in til.tags limit:3 %}
+                            <span class="tag">#{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-category">
+                        <p>아직 머신러닝 관련 TIL이 없습니다.</p>
                         <small>새로운 학습 내용을 추가해보세요!</small>
                     </div>
                 {% endif %}
