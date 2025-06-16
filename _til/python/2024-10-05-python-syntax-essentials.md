@@ -1,7 +1,7 @@
 ---
 layout: til
 title: "파이썬 문법 필수 요소들"
-date: 2024-12-20
+date: 2024-10-05
 category: python
 tags: [python, syntax, programming, basics]
 ---

@@ -1,7 +1,7 @@
 ---
 layout: til
 title: "CSS 속성 선택자 완전 가이드"
-date: 2024-12-22
+date: 2024-09-28
 category: html-css
 tags: [CSS, 선택자, 속성선택자, 스타일링]
 ---

@@ -1,7 +1,7 @@
 ---
 layout: til
 title: "고급 데이터 엔지니어링 개념들"
-date: 2024-12-21
+date: 2024-11-03
 category: data-engineering
 tags: [data-engineering, etl, pipeline, streaming, batch]
 ---

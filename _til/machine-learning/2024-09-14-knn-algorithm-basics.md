@@ -1,7 +1,7 @@
 ---
 layout: til
 title: "KNN(K-Nearest Neighbors) 알고리즘 기초"
-date: 2024-12-22
+date: 2024-09-14
 category: machine-learning
 tags: [knn, machine-learning, classification, scikit-learn, python]
 ---

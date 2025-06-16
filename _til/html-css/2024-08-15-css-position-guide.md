@@ -1,7 +1,7 @@
 ---
 layout: til
 title: "CSS Position 완벽 가이드: Relative, Absolute, Fixed"
-date: 2024-12-22
+date: 2024-08-15
 category: html-css
 tags: [css, position, absolute, relative, fixed, layout]
 ---

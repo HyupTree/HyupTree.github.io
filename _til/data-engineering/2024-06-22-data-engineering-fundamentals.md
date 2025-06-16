@@ -1,7 +1,7 @@
 ---
 layout: til
 title: "데이터 엔지니어링 기초 개념 정리"
-date: 2024-12-18
+date: 2024-06-22
 category: data-engineering
 subject: "Data Engineering"
 tags: [data-engineering, ETL, 파이프라인, Apache-Spark, Airflow]

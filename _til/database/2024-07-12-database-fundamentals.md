@@ -1,7 +1,7 @@
 ---
 layout: til
 title: "데이터베이스 기초 개념"
-date: 2024-12-19
+date: 2024-07-12
 category: database
 tags: [database, sql, rdbms, nosql]
 ---
